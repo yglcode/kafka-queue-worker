@@ -12,7 +12,7 @@ Some design considerations:
 
 How to test:
 
-* Clone this repo, cd queue-work/, run "./build.sh"; then push kafka-queue-worker to your registry.
+* Clone this repo, cd queue-worker/, run "./build.sh"; then push kafka-queue-worker to your registry.
 
 * Check out ["kafka_queue_worker" branch](http://github.com/yglcode/faas), cd faas/gateway/, run "./build.sh"; then push gateway to your registry.
 
@@ -23,7 +23,7 @@ How to test:
   
 * deploy the stack:
   * cd faas/
-  * docker stack deploy -c docker-compose.kafka.yml kk
+  * docker stack deploy -c docker-compose.kafka-queue.yml kk
 
 * check the messaging:
   * docker service logs -f kk_kafka-queue-worker
