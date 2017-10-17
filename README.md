@@ -12,9 +12,9 @@ Some design considerations:
 
 How to test:
 
-* Clone this repo, cd queue-work/, run "./build.sh"; then push it to your registry.
+* Clone this repo, cd queue-work/, run "./build.sh"; then push kafka-queue-worker to your registry.
 
-* Check out my "kafka-queue-worker" branch of openfaas/faas, cd faas/gateway/, run "./build.sh"; then push it to your registry.
+* Check out ["kafka_queue_worker" branch](http://github.com/yglcode/faas), cd faas/gateway/, run "./build.sh"; then push gateway to your registry.
 
 * setup env:
   * REGISTRY_SLASH="your_registry/"
