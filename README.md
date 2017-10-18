@@ -27,6 +27,3 @@ How to test:
 
 * check the messaging:
   * docker service logs -f kk_kafka-queue-worker
-
-
-  
