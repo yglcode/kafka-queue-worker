@@ -12,18 +12,20 @@ Some design considerations:
 
 How to test:
 
-* Clone this repo, cd queue-worker/, run "./build.sh"; then push kafka-queue-worker to your registry.
+* Clone this repo, cd queue-worker/, run "./build.sh"; then push kafka-queue-worker:latest-dev to your registry.
 
-* Check out ["kafka_queue_worker" branch](http://github.com/yglcode/faas/tree/kafka_queue_worker), cd faas/gateway/, run "./build.sh"; then push gateway to your registry.
+* Check out ["kafka_queue_worker" branch](http://github.com/yglcode/faas/tree/kafka_queue_worker), cd faas/gateway/, run "./build.sh"; then push gateway:latest-dev to your registry.
 
-* setup env:
-  * REGISTRY_SLASH="your_registry/"
-  * COLON_ETAG=":latest-dev"
+* Setup env:
   * switch to swarm master docker env: eval $(docker-machine env master)
   
-* deploy the stack:
+* Deploy the stacks:
+         zookeeper+kafka test cluster and gateway+kafka-queue-worker+functions
   * cd faas/
-  * docker stack deploy -c docker-compose.kafka-queue.yml kk
+  * ./deploy_kafka_queue.sh
 
-* check the messaging:
-  * docker service logs -f kk_kafka-queue-worker
+* Test call async functions:
+  for i in {1..10}; do curl http://gateway:8080/async-function/func_echoit --data "hi"; done 
+
+* Check the messaging:
+  * docker service logs -f func_kafka-queue-worker
